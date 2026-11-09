@@ -1,6 +1,7 @@
-# ChromaScript runtime
+# ChromaScript
 
 ![ChromaScript logo](assets/chromascript_logo.png)
+![Mandala example](assets/mandala_example.png)
 
 An audio-reactive visual runtime. A Lua script declares one or more
 shapes whose visual properties are bound to the bass, mid or treble content of
