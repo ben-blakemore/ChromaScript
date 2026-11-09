@@ -17,7 +17,7 @@ circle{ colour = "blue",  x =  0.55, radius = treble.amplitude }
 ## Dependencies
 
 The complete dependency list, reference versions and optional dissertation tools
-are documented in [DEPENDENCIES.md] (DEPENDENCIES.md).
+are documented in DEPENDENCIES.md.
 
 The build needs C11 and C++17 compilers, `make`, `pkg-config` and the development
 packages for GLFW 3, Lua 5.4, PulseAudio, OpenGL and FFTW. Audio capture uses the
@@ -27,7 +27,7 @@ PulseAudio compatibility layer, so the project is Linux-only as it stands.
 Debian / Ubuntu:
 
 ```sh
-sudo apt install build-essential pkg-config libglfw3-dev liblua5.4-dev libpulse-dev libgl-dev libfftw3-dev
+sudo apt install build-essential pkg-config libglfw3-dev liblua5.4-dev libpulse-dev libgl-dev libfftw3-dev pulseaudio-utils
 ```
 
 The glad OpenGL loader is generated code (OpenGL 3.3 core profile)in `third_party/glad/`.
@@ -47,6 +47,13 @@ To run with your own script:
 ```sh
 ./dsl path/to/script.lua
 ```
+
+For your first run, you may find that it defaults to use mic audio.
+To fix, running:
+```sh
+PULSE_SOURCE="$(pactl get-default-sink).monitor" ./dsl path/to/script.lua
+```
+should permanently solve the problem
 
 Run from the repository root so the runtime can read `config/band_values.cfg`.
 Edit that file to change the frequency range used by each audio band, in Hz:
